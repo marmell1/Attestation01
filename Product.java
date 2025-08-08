@@ -6,34 +6,27 @@ public class Product {
     private String name;
     private int price;
     private ArrayList<String[] > Product_list = new ArrayList<>();
-    
+    //добавление продуктов в список
     public void Product (String pName, int pPrice) {
         this.name = pName;
         this.price= pPrice;
-        
+        //проверка на ошибки ввода
         if (this.name.length()==0){System.out.println("Название продукта не может быть пустым");System.exit(0);}
-        // может проверку на ошибку вынести в одну отдельную функцию? одно на всех
-        // тут делаем ой все
         if (this.price<0){System.out.println("Стоимость продукта не может быть отрицательной");System.exit(0);}
-        // тут делаем ой все
-
+        //добавление в список
         String [] serv_list = new String[2];
         serv_list[0] = this.name; 
         serv_list[1] = String.valueOf(this.price);
 
         Product_list.add(serv_list);
-        
-        //list.add("Элемент 1");
     }
-
+    //вывести список продуктов, при необходимости
     public void Print_product_list(){
         for (int i=0;i<Product_list.size();i++) {
             System.out.println(Product_list.get(i)[0]+" - "+ Product_list.get(i)[1]);
-
         }
-
-
     }
+    //получение цены по названию
     public int getPrice (String s){
         for (int i=0; i<Product_list.size();i++){
             if (Product_list.get(i)[0].equals(s)){
@@ -42,7 +35,7 @@ public class Product {
        }
         return 0;
     }
-
+    //Переопределение методов
     public void setPrice(int i){
         this.price = i;
     }
